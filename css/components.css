@@ -1,0 +1,211 @@
+/* ==========================================================================
+   QuizRanzzPro — Components, Results & Certificate CSS (v3.0)
+   ========================================================================== */
+
+/* ---- Results & Analytics ----------------------------------------------- */
+.results-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.results-hero-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.results-hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-600), var(--accent-amber));
+}
+
+.score-circle-wrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 1.25rem auto;
+}
+
+.score-circle-svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.score-circle-bg {
+  fill: none;
+  stroke: var(--bg-surface-elevated);
+  stroke-width: 9;
+}
+
+.score-circle-bar {
+  fill: none;
+  stroke: var(--primary-500);
+  stroke-width: 9;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.score-text-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.score-percent {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text-main);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.results-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.85rem;
+  margin: 1.75rem 0 0;
+}
+
+.result-stat-box {
+  background: var(--bg-surface-elevated);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.result-stat-value {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.02em;
+}
+
+.result-stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* ---- Review Items ------------------------------------------------------- */
+.review-list { margin-top: 1.5rem; }
+
+.review-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1.4rem;
+  margin-bottom: 1rem;
+  transition: box-shadow var(--transition-fast);
+}
+
+.review-item.is-correct  { border-left: 5px solid var(--accent-emerald); }
+.review-item.is-wrong    { border-left: 5px solid var(--accent-rose); }
+
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.review-explanation {
+  margin-top: 0.9rem;
+  padding: 0.9rem 1rem;
+  background: var(--bg-surface-elevated);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  border-left: 3px solid var(--accent-amber);
+}
+
+/* ---- Certificate -------------------------------------------------------- */
+.certificate-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cert-canvas-wrapper {
+  max-width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+#cert-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- Lightbox ---------------------------------------------------------- */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.93);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: zoom-out;
+  animation: fadeSlideIn 0.2s ease;
+}
+
+.lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 60px rgba(0,0,0,0.8);
+}
+
+/* ---- Print ------------------------------------------------------------ */
+.print-only { display: none; }
+
+@media print {
+  body { background: #fff !important; color: #000 !important; }
+  .navbar, .nav-links, .nav-actions, .modal-overlay,
+  #toast-container, .bg-grid-overlay, .bg-orbs,
+  .anticheat-alert-modal { display: none !important; }
+  .print-only { display: block !important; }
+  .card, .review-item {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 1.5rem !important;
+  }
+}

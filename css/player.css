@@ -1,0 +1,440 @@
+/* ==========================================================================
+   QuizRanzzPro - Arena / Test Player CSS (Anti-Cheat & Mobile Ready)
+   ========================================================================== */
+
+.player-view {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+/* Player HUD Bar */
+.player-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 75px;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.hud-title {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  max-width: 280px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hud-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Anti-Cheat Violation Badge in HUD */
+.violation-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 800;
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  color: var(--accent-rose);
+}
+
+.violation-badge.clean {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--accent-emerald);
+}
+
+/* Timer Display */
+.timer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.95rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+}
+
+.timer-badge.warning {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: var(--accent-amber);
+  color: var(--accent-amber);
+}
+
+.timer-badge.danger {
+  background: rgba(244, 63, 94, 0.2);
+  border-color: var(--accent-rose);
+  color: var(--accent-rose);
+  animation: pulseWarning 1s infinite;
+}
+
+@keyframes pulseWarning {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-surface-elevated);
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-500), var(--accent-pink));
+  border-radius: var(--radius-full);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Active Question Arena Card */
+.player-question-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.question-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.question-prompt {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+}
+
+/* Code Snippet in Player */
+.code-viewer-container {
+  margin: 1.25rem 0;
+  border-radius: var(--radius-lg);
+  background: #05080F;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.code-viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.code-lang-tag {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--primary-200);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.code-viewer-body {
+  padding: 1.1rem 1.25rem;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.code-viewer-body code {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #F1F5F9;
+  white-space: pre;
+}
+
+/* Image Attachment in Player */
+.player-image-wrapper {
+  margin: 1.25rem 0;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem;
+  border: 1px solid var(--border-subtle);
+  cursor: zoom-in;
+}
+
+.player-image-wrapper img {
+  max-height: 380px;
+  width: auto;
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.player-image-wrapper:hover img {
+  transform: scale(1.01);
+}
+
+/* Audio Player in Arena */
+.player-audio-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1rem 1.5rem;
+  margin: 1.25rem 0;
+  flex-wrap: wrap;
+}
+
+.audio-icon-pulse {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-purple), var(--primary-500));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.player-audio-card audio {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Player Answer Options Grid */
+.player-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.player-option-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.35rem;
+  background: var(--bg-surface-elevated);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.player-option-item:hover {
+  border-color: var(--primary-500);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.player-option-item.selected {
+  border-color: var(--primary-500);
+  background: rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 0 1px var(--primary-500), var(--shadow-sm);
+}
+
+.player-option-item.correct-reveal {
+  border-color: var(--accent-emerald) !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+}
+
+.player-option-item.wrong-reveal {
+  border-color: var(--accent-rose) !important;
+  background: rgba(244, 63, 94, 0.15) !important;
+}
+
+.key-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.player-option-item.selected .key-badge {
+  background: var(--primary-500);
+  color: #ffffff;
+  border-color: var(--primary-500);
+}
+
+.player-option-item.correct-reveal .key-badge {
+  background: var(--accent-emerald);
+  color: #ffffff;
+  border-color: var(--accent-emerald);
+}
+
+.player-option-item.wrong-reveal .key-badge {
+  background: var(--accent-rose);
+  color: #ffffff;
+  border-color: var(--accent-rose);
+}
+
+.option-text-content {
+  flex: 1;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* Fill-in-the-Blank Input */
+.player-blank-wrapper {
+  margin-top: 1.5rem;
+}
+
+.player-blank-input {
+  font-size: 1.15rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-subtle);
+  background: var(--bg-surface-elevated);
+  color: var(--text-main);
+  width: 100%;
+}
+
+.player-blank-input:focus {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 4px var(--primary-glow);
+}
+
+/* Practice Instant Explanation */
+.instant-feedback-card {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface-elevated);
+  border-left: 4px solid var(--primary-500);
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.instant-feedback-card.correct {
+  border-left-color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.instant-feedback-card.wrong {
+  border-left-color: var(--accent-rose);
+  background: rgba(244, 63, 94, 0.1);
+}
+
+/* Arena Bottom Navigation */
+.player-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Question Drawer / Grid */
+.question-grid-drawer {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.grid-pills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.grid-pill-btn {
+  height: 44px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface-elevated);
+  color: var(--text-muted);
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.grid-pill-btn:hover {
+  border-color: var(--primary-500);
+  color: var(--primary-500);
+}
+
+.grid-pill-btn.current {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 2px var(--primary-500);
+  font-weight: 900;
+}
+
+.grid-pill-btn.answered {
+  background: var(--primary-500);
+  color: #ffffff;
+  border-color: var(--primary-500);
+}
+
+.grid-pill-btn.flagged::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-amber);
+}
